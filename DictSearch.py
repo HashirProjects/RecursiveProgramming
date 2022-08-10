@@ -32,10 +32,32 @@ class DictSearch():
 	def printDict(self):
 		print (self.data)
 
+	def Exists(self,name):
+
+		nameList = [*name]
+		nameList.append("end")
+
+		def findFromDict(nameList,data):
+			char = nameList[0]
+			if char in data:
+				if char == "end":
+					print("found")
+				else:
+					findFromDict(nameList[1:],data[char])
+			else:
+				print("not found")
+
+		findFromDict(nameList,self.data)
+
 if __name__ == "__main__":
 	db = DictSearch()
 	db.addValue("martha")
 	db.addValue("jane")
 	db.addValue("ja")
 	db.addValue("jhon")
+	db.addValue("janx")
+	db.Exists("jan")
+	db.Exists("ja")
+	db.Exists("j")
+	db.Exists("martha")
 	db.printDict()
